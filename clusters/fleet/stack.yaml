@@ -4,8 +4,6 @@ metadata:
   name: stack
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: vendor
   interval: 60m
   path: ./stack/fleet
   prune: true
