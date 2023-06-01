@@ -20,4 +20,4 @@ spec:
         kind: HelmRepository
         name: metrics-server
       version: 3.10.0
-  interval: 60m
+  interval: 1h

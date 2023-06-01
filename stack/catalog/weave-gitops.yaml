@@ -21,7 +21,7 @@ spec:
         kind: HelmRepository
         name: weaveworks
       version: 4.0.21
-  interval: 60m
+  interval: 1h
   values:
     adminUser:
       create: true

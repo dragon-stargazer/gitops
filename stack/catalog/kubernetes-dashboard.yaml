@@ -25,7 +25,7 @@ spec:
         kind: HelmRepository
         name: kubernetes-dashboard
       version: 6.0.8
-  interval: 60m
+  interval: 1h
   values:
     metricsScraper:
       enabled: true

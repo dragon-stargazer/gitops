@@ -11,4 +11,4 @@ spec:
         kind: HelmRepository
         name: prometheus-community
       version: 4.17.3
-  interval: 60m
+  interval: 1h

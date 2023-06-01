@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../stack/catalog/cert-manager.yaml
+  - ../../../stack/catalog/ingress-nginx.yaml
+  - ../../../stack/catalog/istio.yaml
+  - ../../../stack/catalog/kube-state-metrics.yaml
+  - ../../../stack/catalog/kubernetes-dashboard.yaml
+  - ../../../stack/catalog/metrics-server.yaml
+  - ../../../stack/catalog/node-exporter.yaml
+  - ../../../stack/catalog/weave-gitops.yaml
