@@ -16,7 +16,7 @@ spec:
         name: csi-do-node
         namespace: kube-system
         version: v1
-  path: ./vendor/do
+  path: ./catalog/vendor/do
   prune: true
   retryInterval: 1m
   sourceRef:

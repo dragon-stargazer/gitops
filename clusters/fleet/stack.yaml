@@ -4,6 +4,8 @@ metadata:
   name: stack
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: prelude
   interval: 1h
   path: ./clusters/fleet-overlay/stack
   prune: true
