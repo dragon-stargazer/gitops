@@ -29,6 +29,7 @@ spec:
   values:
     buckets:
       - name: harbor
+    existingSecret: minio-secret
     mode: standalone
     persistence:
       size: 50Gi
@@ -63,6 +64,8 @@ spec:
     - name: minio
   interval: 1h
   values:
+    existingSecretAdminPassword: harbor-secret
+    existingSecretSecretKey: harbor-secret
     expose:
       tls:
         enabled: false
@@ -78,7 +81,7 @@ spec:
         disableredirect: true
         s3:
           bucket: harbor
-          existingSecret: harbor-s3
+          existingSecret: harbor-secret
           regionendpoint: http://minio.harbor:9000
         type: s3
       persistentVolumeClaim:
@@ -91,3 +94,6 @@ spec:
       registry:
         upload_purging:
           age: 24h
+    registry:
+      credentials:
+        existingSecret: harbor-secret
