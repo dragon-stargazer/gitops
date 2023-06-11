@@ -9,3 +9,4 @@ resources:
   - ../../../catalog/metrics-server.yaml
   - ../../../catalog/node-exporter.yaml
   - ../../../catalog/weave-gitops.yaml
+  - weave-gitops-sealed.yaml
