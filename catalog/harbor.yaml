@@ -1,0 +1,99 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: harbor
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: minio
+  namespace: harbor
+spec:
+  interval: 24h
+  url: https://charts.min.io
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minio
+  namespace: harbor
+spec:
+  chart:
+    spec:
+      chart: minio
+      sourceRef:
+        kind: HelmRepository
+        name: minio
+      version: 5.0.10
+  interval: 1h
+  values:
+    buckets:
+      - name: harbor
+    existingSecret: minio-secret
+    mode: standalone
+    persistence:
+      size: 50Gi
+    replicas: 1
+    resources:
+      requests:
+        memory: 512Mi
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: harbor
+  namespace: harbor
+spec:
+  interval: 24h
+  url: https://helm.goharbor.io
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: harbor
+  namespace: harbor
+spec:
+  chart:
+    spec:
+      chart: harbor
+      sourceRef:
+        kind: HelmRepository
+        name: harbor
+      version: 1.12.2
+  dependsOn:
+    - name: minio
+  interval: 1h
+  values:
+    existingSecretAdminPassword: harbor-secret
+    existingSecretSecretKey: harbor-secret
+    expose:
+      tls:
+        enabled: false
+      type: nodePort
+    externalURL: http://harbor.harbor
+    jobservice:
+      jobLoggers:
+        - database
+    metrics:
+      enabled: true
+    persistence:
+      imageChartStorage:
+        disableredirect: true
+        s3:
+          bucket: harbor
+          existingSecret: harbor-secret
+          regionendpoint: http://minio.harbor:9000
+        type: s3
+      persistentVolumeClaim:
+        database:
+          size: 10Gi
+        redis:
+          size: 10Gi
+        trivy:
+          size: 10Gi
+      registry:
+        upload_purging:
+          age: 24h
+    registry:
+      credentials:
+        existingSecret: harbor-secret
