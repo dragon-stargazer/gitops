@@ -7,6 +7,18 @@ spec:
   dependsOn:
     - name: prelude
   interval: 1h
+  patches:
+    - patch: |-
+        - op: add
+          path: /spec/values/proxy
+          value:
+            httpsProxy: http://172.24.0.1:6666
+      target:
+        group: helm.toolkit.fluxcd.io
+        kind: HelmRelease
+        name: harbor
+        namespace: harbor
+        version: v2beta1
   path: ./clusters/default-overlay/stack
   prune: true
   retryInterval: 1m
