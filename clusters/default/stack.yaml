@@ -9,6 +9,9 @@ spec:
   interval: 1h
   patches:
     - patch: |-
+        - op: replace
+          path: /spec/values/externalURL
+          value: http://172.20.24.10:30002
         - op: add
           path: /spec/values/proxy
           value:
