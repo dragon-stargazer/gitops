@@ -76,6 +76,8 @@ spec:
         - database
     metrics:
       enabled: true
+    notary:
+      enabled: false
     persistence:
       imageChartStorage:
         disableredirect: true
