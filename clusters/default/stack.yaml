@@ -10,8 +10,17 @@ spec:
   patches:
     - patch: |-
         - op: replace
+          path: /spec/values/expose
+          value:
+            tls:
+              certSource: secret
+              enabled: true
+              secret:
+                secretName: harbor-tls
+            type: nodePort
+        - op: replace
           path: /spec/values/externalURL
-          value: http://172.20.24.10:30002
+          value: https://harbor.bikeshed.dev:30002
         - op: add
           path: /spec/values/proxy
           value:
