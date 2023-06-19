@@ -20,7 +20,7 @@ spec:
             type: nodePort
         - op: replace
           path: /spec/values/externalURL
-          value: https://harbor.bikeshed.dev:30002
+          value: https://harbor.bikeshed.dev:30003
         - op: add
           path: /spec/values/proxy
           value:
