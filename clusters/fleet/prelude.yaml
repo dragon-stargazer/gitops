@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h
-  path: ./catalog/prelude/core
+  path: ./catalog/prelude/enhanced
   prune: true
   retryInterval: 1m
   sourceRef:
