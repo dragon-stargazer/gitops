@@ -24,6 +24,8 @@ spec:
   interval: 1h
   values:
     adminUser:
+      create: true
+      createSecret: false
       username: admin
     metrics:
       enabled: true
