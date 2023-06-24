@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   - ../../../catalog/harbor.yaml
   - certificate-harbor-tls.yaml
-  - cloudflare-sealed.yaml
-  - harbor-minio-sealed.yaml
-  - harbor-sealed.yaml
+  - external-secret-cloudflare.yaml
+  - external-secret-harbor.yaml
   - issuer-letsencrypt.yaml
