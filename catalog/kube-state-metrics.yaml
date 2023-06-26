@@ -19,5 +19,5 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
-      version: 5.8.0
+      version: 5.8.1
   interval: 1h
