@@ -12,15 +12,20 @@ spec:
         - op: replace
           path: /spec/values/expose
           value:
+            annotations:
+              cert-manager.io/cluster-issuer: letsencrypt
+              cert-manager.io/private-key-algorithm: ECDSA
+              cert-manager.io/private-key-rotation-policy: Always
+            ingress:
+              className: cilium
+              hosts:
+                core: harbor.bikeshed.dev
             tls:
-              certSource: secret
               enabled: true
-              secret:
-                secretName: harbor-tls
-            type: nodePort
+            type: ingress
         - op: replace
           path: /spec/values/externalURL
-          value: https://harbor.bikeshed.dev:30003
+          value: https://harbor.bikeshed.dev:30443
         - op: add
           path: /spec/values/proxy
           value:
