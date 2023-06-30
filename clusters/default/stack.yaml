@@ -12,11 +12,11 @@ spec:
         - op: replace
           path: /spec/values/expose
           value:
-            annotations:
-              cert-manager.io/cluster-issuer: letsencrypt
-              cert-manager.io/private-key-algorithm: ECDSA
-              cert-manager.io/private-key-rotation-policy: Always
             ingress:
+              annotations:
+                cert-manager.io/cluster-issuer: letsencrypt
+                cert-manager.io/private-key-algorithm: ECDSA
+                cert-manager.io/private-key-rotation-policy: Always
               className: cilium
               hosts:
                 core: harbor.bikeshed.dev
