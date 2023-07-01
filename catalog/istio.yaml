@@ -43,6 +43,10 @@ spec:
   dependsOn:
     - name: istio-base
   interval: 1h
+  values:
+    global:
+      proxy:
+        clusterDomain: cluster.local
 ---
 apiVersion: v1
 kind: Namespace
