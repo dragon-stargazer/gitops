@@ -17,7 +17,7 @@ spec:
                 cert-manager.io/cluster-issuer: letsencrypt
                 cert-manager.io/private-key-algorithm: ECDSA
                 cert-manager.io/private-key-rotation-policy: Always
-              className: cilium
+              className: istio
               hosts:
                 core: harbor.bikeshed.dev
             tls:
@@ -25,7 +25,7 @@ spec:
             type: ingress
         - op: replace
           path: /spec/values/externalURL
-          value: https://harbor.bikeshed.dev:30443
+          value: https://harbor.bikeshed.dev:31443
         - op: add
           path: /spec/values/proxy
           value:
