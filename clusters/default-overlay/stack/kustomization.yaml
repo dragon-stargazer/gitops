@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../../../catalog/harbor.yaml
   - ../../../catalog/istio.yaml
+  - certificate-harbor-ingress.yaml
   - external-secret-cloudflare.yaml
   - external-secret-harbor.yaml
   - issuer-letsencrypt.yaml
