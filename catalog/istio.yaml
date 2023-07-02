@@ -47,6 +47,8 @@ spec:
     global:
       proxy:
         clusterDomain: cluster.local
+    meshConfig:
+      trustDomain: cluster.local
 ---
 apiVersion: v1
 kind: Namespace

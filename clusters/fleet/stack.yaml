@@ -12,6 +12,9 @@ spec:
         - op: replace
           path: /spec/values/global/proxy/clusterDomain
           value: fleet.local
+        - op: replace
+          path: /spec/values/meshConfig/trustDomain
+          value: fleet.local
       target:
         group: helm.toolkit.fluxcd.io
         kind: HelmRelease
