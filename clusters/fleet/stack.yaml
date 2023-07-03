@@ -7,21 +7,10 @@ spec:
   dependsOn:
     - name: prelude
   interval: 1h
-  patches:
-    - patch: |-
-        - op: replace
-          path: /spec/values/global/proxy/clusterDomain
-          value: fleet.local
-        - op: replace
-          path: /spec/values/meshConfig/trustDomain
-          value: fleet.local
-      target:
-        group: helm.toolkit.fluxcd.io
-        kind: HelmRelease
-        name: istiod
-        namespace: istio-system
-        version: v2beta1
   path: ./clusters/fleet-overlay/stack
+  postBuild:
+    substitute:
+      CLUSTER_DOMAIN: fleet.local
   prune: true
   retryInterval: 1m
   sourceRef:
