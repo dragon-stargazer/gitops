@@ -29,3 +29,6 @@ spec:
   values:
     enableCertificateOwnerRef: true
     installCRDs: true
+    prometheus:
+      servicemonitor:
+        enabled: ${ENABLE_SERVICE_MONITOR:=true}

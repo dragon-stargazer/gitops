@@ -30,6 +30,9 @@ spec:
     buckets:
       - name: harbor
     existingSecret: minio-secret
+    metrics:
+      serviceMonitor:
+        enabled: ${ENABLE_SERVICE_MONITOR:=true}
     mode: standalone
     persistence:
       size: 50Gi
@@ -76,6 +79,8 @@ spec:
         - database
     metrics:
       enabled: true
+      serviceMonitor:
+        enabled: ${ENABLE_SERVICE_MONITOR:=true}
     notary:
       enabled: false
     persistence:

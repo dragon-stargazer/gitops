@@ -46,9 +46,9 @@ spec:
   values:
     global:
       proxy:
-        clusterDomain: cluster.local
+        clusterDomain: ${CLUSTER_DOMAIN:=cluster.local}
     meshConfig:
-      trustDomain: cluster.local
+      trustDomain: ${CLUSTER_DOMAIN:=cluster.local}
 ---
 apiVersion: v1
 kind: Namespace
@@ -73,6 +73,18 @@ spec:
     - name: istiod
       namespace: istio-system
   interval: 1h
+  postRenderers:
+    - kustomize:
+        patches:
+          - patch: |-
+              - op: add
+                path: /spec/ipFamilyPolicy
+                value: PreferDualStack
+            target:
+              kind: Service
+              name: istio-ingressgateway
+              namespace: istio-ingress
+              version: v1
   values:
     service:
       ports:
