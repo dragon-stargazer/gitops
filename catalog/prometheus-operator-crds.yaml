@@ -10,6 +10,8 @@ spec:
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
+  labels:
+    type: crd
   name: prometheus-operator-crds
   namespace: kube-system
 spec:

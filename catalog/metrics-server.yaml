@@ -23,6 +23,6 @@ spec:
   interval: 1h
   values:
     metrics:
-      enabled: false
+      enabled: true
     serviceMonitor:
       enabled: ${ENABLE_SERVICE_MONITOR:=true}
