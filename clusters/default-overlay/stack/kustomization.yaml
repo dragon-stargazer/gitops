@@ -7,3 +7,5 @@ resources:
   - external-secret-cloudflare.yaml
   - external-secret-harbor.yaml
   - issuer-letsencrypt.yaml
+  - sops-doppler-cloudflare.yaml
+  - sops-doppler-harbor.yaml
