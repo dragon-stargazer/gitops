@@ -9,3 +9,4 @@ resources:
   - ../../../catalog/node-exporter.yaml
   - ../../../catalog/weave-gitops.yaml
   - external-secret-weave-gitops.yaml
+  - sops-doppler-weave-gitops.yaml

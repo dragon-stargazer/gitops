@@ -1,0 +1,28 @@
+apiVersion: v1
+data:
+    DOPPLER_TOKEN: ENC[AES256_GCM,data:hh3ZwesS3i/PeB5fSqDByqWp+w5lr729nrP9VW0jC9kObxcF9gS6Cg3iL4I9j7Vz2YTl/dTvqFKmDFzoLi3N6ebVK6ukFjHjGBbIH0HoIzDXXGwGZYgDH0jjZNXgD34XBoPfCx5Tq65x2qcm,iv:H6Weg7KIhnX5kE1uNN0l3YMJQ65ke8sy6AgFNjsNnaA=,tag:6Fn9tot6/o6G1xiCxCb9EA==,type:str]
+kind: Secret
+metadata:
+    name: doppler-token-weave-gitops-secret
+    namespace: flux-system
+type: Opaque
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1v76x4h4j9fvyr22vh76m734udc6muvx78lzkcw4rvahjmkfatuyq8xjqs6
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQdkhIZ1cxdzM0NnhPcWs4
+            K0Q1WjREU3FmRzIxRUhMV08rTThVVjFTdlU4CmJrbytZNFJzYVdTRGt0eE5FcHY1
+            azQ1SllTeWlhdkR0N0hha2Z5aisxY00KLS0tIGtpWVhoRzlMaHp5WFhKcHJFSUJt
+            L2JXcldHVnI2dnc3ck1XK2FNK0NETDgKUiZSGSWkXs9qG9h090qYY3QMlpSKuHWl
+            Ww5NknuWcNNDVRpV5xI2m0KQJvXsKk1doHUvvytQsZs1c5LfyPfcJg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-07-06T12:51:50Z"
+    mac: ENC[AES256_GCM,data:1cbiru3A/5k7hUJIfYsq6fjd2hb/RQM9xfuroLzoBdI4sLKu3hTOhdnbSkI2hthkY67s9Dqc/wgFOzv+HIOa1J9N4qm0IjGtN12nh7H5RLEEuKqh9hin6diSBwJfrUTeyU3tMcVcZ5yvQ9UBN+1AxeE+8boKm9uoCAstxGPKu8s=,iv:LUc83IBtz6VJ7gKvATn6IE8qj2rjMGylDjumSK6Njd8=,tag:6uCL7DLeRqv6XdjufCe44Q==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
