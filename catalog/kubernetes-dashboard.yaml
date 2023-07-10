@@ -24,10 +24,15 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: kubernetes-dashboard
-      version: 6.0.8
+      version: 7.0.2
   interval: 1h
   values:
-    metricsScraper:
-      enabled: true
-    serviceMonitor:
-      enabled: ${ENABLE_SERVICE_MONITOR:=true}
+    cert-manager:
+      enabled: false
+    extras:
+      serviceMonitor:
+        enabled: ${ENABLE_SERVICE_MONITOR:=true}
+    metrics-server:
+      enabled: false
+    nginx:
+      enabled: false
