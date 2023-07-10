@@ -4,7 +4,6 @@ resources:
   - ../../../catalog/ingress-nginx.yaml
   - ../../../catalog/istio.yaml
   - ../../../catalog/kube-state-metrics.yaml
-  - ../../../catalog/kubernetes-dashboard.yaml
   - ../../../catalog/metrics-server.yaml
   - ../../../catalog/node-exporter.yaml
   - ../../../catalog/weave-gitops.yaml

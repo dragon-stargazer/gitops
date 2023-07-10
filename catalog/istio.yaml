@@ -48,7 +48,13 @@ spec:
       proxy:
         clusterDomain: ${CLUSTER_DOMAIN:=cluster.local}
     meshConfig:
+      defaultConfig:
+        proxyMetadata:
+          ISTIO_AGENT_DUAL_STACK: "true"
       trustDomain: ${CLUSTER_DOMAIN:=cluster.local}
+    pilot:
+      env:
+        ISTIO_DUAL_STACK: "true"
 ---
 apiVersion: v1
 kind: Namespace
