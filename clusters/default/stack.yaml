@@ -60,7 +60,7 @@ spec:
             tls:
               - hosts:
                   - auth.bikeshed.dev
-                secretName: dex-ingress-tls
+                secretName: dex-ingress
       target:
         group: helm.toolkit.fluxcd.io
         kind: HelmRelease

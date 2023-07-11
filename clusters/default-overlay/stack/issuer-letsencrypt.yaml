@@ -16,4 +16,5 @@ spec:
               name: cloudflare-credential
         selector:
           dnsNames:
+            - auth.bikeshed.dev
             - harbor.bikeshed.dev
