@@ -13,6 +13,61 @@ spec:
   interval: 1h
   patches:
     - patch: |-
+        - op: add
+          path: /spec/values/config
+          value:
+            connectors:
+              - config:
+                  clientID: $GITHUB_CLIENT_ID
+                  clientSecret: $GITHUB_CLIENT_SECRET
+                  orgs:
+                    - name: dragon-stargazer
+                  redirectURI: https://auth.bikeshed.dev:31443/dex/callback
+                id: github
+                name: GitHub
+                type: github
+            enablePasswordDB: false
+            issuer: https://auth.bikeshed.dev:31443/dex
+            staticClients:
+              - idEnv: STATIC_CLIENT_ID_HARBOR
+                name: Harbor
+                redirectURIs:
+                  - https://harbor.bikeshed.dev:31443/c/oidc/callback
+                secretEnv: STATIC_CLIENT_SECRET_HARBOR
+            storage:
+              config:
+                inCluster: true
+              type: kubernetes
+        - op: add
+          path: /spec/values/envFrom
+          value:
+            - secretRef:
+                name: dex-credential
+        - op: add
+          path: /spec/values/ingress
+          value:
+            annotations:
+              cert-manager.io/cluster-issuer: letsencrypt
+              cert-manager.io/private-key-algorithm: ECDSA
+              cert-manager.io/private-key-rotation-policy: Always
+            className: istio
+            enabled: true
+            hosts:
+              - host: auth.bikeshed.dev
+                paths:
+                  - path: /dex/
+                    pathType: Prefix
+            tls:
+              - hosts:
+                  - auth.bikeshed.dev
+                secretName: dex-ingress-tls
+      target:
+        group: helm.toolkit.fluxcd.io
+        kind: HelmRelease
+        name: dex
+        namespace: dex
+        version: v2beta1
+    - patch: |-
         - op: replace
           path: /spec/values/expose
           value:

@@ -5,7 +5,9 @@ resources:
   - ../../../catalog/istio.yaml
   - certificate-harbor-ingress.yaml
   - external-secret-cloudflare.yaml
+  - external-secret-dex.yaml
   - external-secret-harbor.yaml
   - issuer-letsencrypt.yaml
   - sops-doppler-cloudflare.yaml
+  - sops-doppler-dex.yaml
   - sops-doppler-harbor.yaml
