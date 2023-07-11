@@ -22,12 +22,16 @@ spec:
                   clientSecret: $GITHUB_CLIENT_SECRET
                   orgs:
                     - name: dragon-stargazer
+                      teams:
+                        - sre
                   redirectURI: https://auth.bikeshed.dev:31443/dex/callback
                 id: github
                 name: GitHub
                 type: github
             enablePasswordDB: false
             issuer: https://auth.bikeshed.dev:31443/dex
+            oauth2:
+              skipApprovalScreen: true
             staticClients:
               - idEnv: STATIC_CLIENT_ID_HARBOR
                 name: Harbor
