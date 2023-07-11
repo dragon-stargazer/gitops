@@ -4,6 +4,7 @@ resources:
   - ../../../catalog/dex.yaml
   - ../../../catalog/harbor.yaml
   - ../../../catalog/istio.yaml
+  - certificate-dex-ingress.yaml
   - certificate-harbor-ingress.yaml
   - external-secret-cloudflare.yaml
   - external-secret-dex.yaml
