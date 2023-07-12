@@ -23,6 +23,7 @@ spec:
                   orgs:
                     - name: dragon-stargazer
                       teams:
+                        - infra
                         - sre
                   redirectURI: https://auth.bikeshed.dev:31443/dex/callback
                 id: github
