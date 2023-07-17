@@ -87,6 +87,7 @@ spec:
                 path: /spec/ipFamilyPolicy
                 value: PreferDualStack
             target:
+              group: core
               kind: Service
               name: istio-ingressgateway
               namespace: istio-ingress
