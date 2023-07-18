@@ -27,9 +27,12 @@ spec:
       version: 1.13.0
   interval: 1h
   values:
-    interval: 3m
+    interval: 10m
     policy: sync
     serviceMonitor:
       enabled: ${ENABLE_SERVICE_MONITOR:=true}
+    sources:
+      - ingress
+    triggerLoopOnEvent: true
     txtOwnerId: external-dns
     txtPrefix: external-dns-

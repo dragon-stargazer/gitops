@@ -8,10 +8,12 @@ resources:
   - ../../../catalog/node-problem-detector.yaml
   - certificate-dex-ingress.yaml
   - certificate-harbor-ingress.yaml
-  - external-secret-cloudflare.yaml
+  - external-secret-cert-manager.yaml
   - external-secret-dex.yaml
+  - external-secret-external-dns.yaml
   - external-secret-harbor.yaml
   - issuer-letsencrypt.yaml
-  - sops-doppler-cloudflare.yaml
+  - sops-doppler-cert-manager.yaml
   - sops-doppler-dex.yaml
+  - sops-doppler-external-dns.yaml
   - sops-doppler-harbor.yaml
