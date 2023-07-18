@@ -27,5 +27,8 @@ spec:
       version: 1.13.0
   interval: 1h
   values:
+    policy: sync
     serviceMonitor:
       enabled: ${ENABLE_SERVICE_MONITOR:=true}
+    txtOwnerId: external-dns
+    txtPrefix: external-dns

@@ -73,6 +73,31 @@ spec:
         namespace: dex
         version: v2beta1
     - patch: |-
+        - op: add
+          path: /spec/values/domainFilters
+          value:
+            - bikeshed.dev
+        - op: add
+          path: /spec/values/env
+          value:
+            - name: CF_API_TOKEN 
+              valueFrom: 
+                secretKeyRef: 
+                  key: CF_API_TOKEN
+                  name: cloudflare-credential 
+        - op: add
+          path: /spec/values/provider
+          value: cloudflare
+        - op: replace
+          path: /spec/values/txtOwnerId
+          value: harbor
+      target:
+        group: helm.toolkit.fluxcd.io
+        kind: HelmRelease
+        name: external-dns
+        namespace: external-dns
+        version: v2beta1
+    - patch: |-
         - op: replace
           path: /spec/values/expose
           value:
