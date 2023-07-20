@@ -93,6 +93,7 @@ spec:
               namespace: istio-ingress
               version: v1
   values:
+    imagePullPolicy: IfNotPresent
     service:
       ports:
         - name: status-port

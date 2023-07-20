@@ -129,6 +129,9 @@ spec:
         namespace: harbor
         version: v2beta1
   path: ./clusters/default-overlay/stack
+  postBuild:
+    substitute:
+      var_substitution_enabled: "true"
   prune: true
   retryInterval: 1m
   sourceRef:
