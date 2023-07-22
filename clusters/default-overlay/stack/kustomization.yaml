@@ -7,6 +7,7 @@ resources:
   - ../../../catalog/istio.yaml
   - ../../../catalog/node-exporter.yaml
   - ../../../catalog/node-problem-detector.yaml
+  - ../../../catalog/prometheus-community.yaml
   - certificate-dex-ingress.yaml
   - certificate-harbor-ingress.yaml
   - external-secret-cert-manager.yaml
