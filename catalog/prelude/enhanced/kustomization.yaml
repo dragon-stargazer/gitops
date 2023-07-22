@@ -3,17 +3,4 @@ kind: Kustomization
 resources:
   - ../../cert-manager.yaml
   - ../../external-secrets.yaml
-  - ../../prometheus-operator-crds.yaml
-patches:
-  - patch: |-
-      - op: add
-        path: /spec/dependsOn
-        value:
-          - name: prometheus-operator-crds
-            namespace: kube-system
-    target:
-      group: helm.toolkit.fluxcd.io
-      kind: HelmRelease
-      labelSelector: "type!=crd"
-      version: v2beta1
-
+  - https://github.com/kubernetes-sigs/gateway-api/releases/download/v0.7.1/standard-install.yaml

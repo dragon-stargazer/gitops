@@ -10,7 +10,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
-      version: 4.20.0
+      version: 4.20.1
   interval: 1h
   values:
     prometheus:

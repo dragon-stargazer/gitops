@@ -24,9 +24,12 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: kubernetes-dashboard
-      version: 7.0.2
+      version: 7.0.3
   interval: 1h
   values:
+    app:
+      ingress:
+        enabled: false
     cert-manager:
       enabled: false
     extras:
