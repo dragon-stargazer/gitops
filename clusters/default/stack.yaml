@@ -81,11 +81,11 @@ spec:
         - op: add
           path: /spec/values/env
           value:
-            - name: CF_API_TOKEN 
-              valueFrom: 
-                secretKeyRef: 
+            - name: CF_API_TOKEN
+              valueFrom:
+                secretKeyRef:
                   key: CF_API_TOKEN
-                  name: cloudflare-credential 
+                  name: cloudflare-credential
         - op: add
           path: /spec/values/provider
           value: cloudflare
