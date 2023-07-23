@@ -27,3 +27,7 @@ spec:
       enabled: true
     nodeExporter:
       enabled: true
+    prometheus:
+      prometheusSpec:
+        podMonitorSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
