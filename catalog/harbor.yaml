@@ -33,6 +33,7 @@ spec:
     metrics:
       serviceMonitor:
         enabled: ${ENABLE_SERVICE_MONITOR:=true}
+        includeNode: true
     mode: standalone
     persistence:
       size: 50Gi

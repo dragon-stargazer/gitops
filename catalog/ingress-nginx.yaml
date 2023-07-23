@@ -33,6 +33,9 @@ spec:
         serviceMonitor:
           enabled: ${ENABLE_SERVICE_MONITOR:=true}
       service:
+        ipFamilies:
+          - IPv4
+          - IPv6
         ipFamilyPolicy: PreferDualStack
         nodePorts:
           http: 32080

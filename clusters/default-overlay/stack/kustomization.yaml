@@ -5,7 +5,7 @@ resources:
   - ../../../catalog/external-dns.yaml
   - ../../../catalog/harbor.yaml
   - ../../../catalog/istio.yaml
-  - ../../../catalog/node-exporter.yaml
+  - ../../../catalog/kube-prometheus-stack.yaml
   - ../../../catalog/node-problem-detector.yaml
   - ../../../catalog/prometheus-community.yaml
   - certificate-dex-ingress.yaml
