@@ -82,7 +82,7 @@ spec:
   postRenderers:
     - kustomize:
         patches:
-          - patch: |-
+          - patch: |
               - op: add
                 path: /spec/ipFamilyPolicy
                 value: PreferDualStack

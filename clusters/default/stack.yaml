@@ -12,7 +12,7 @@ spec:
     - name: prelude
   interval: 1h
   patches:
-    - patch: |-
+    - patch: |
         - op: add
           path: /spec/values/config
           value:
@@ -73,7 +73,7 @@ spec:
         name: dex
         namespace: dex
         version: v2beta1
-    - patch: |-
+    - patch: |
         - op: add
           path: /spec/values/domainFilters
           value:
@@ -98,7 +98,7 @@ spec:
         name: external-dns
         namespace: external-dns
         version: v2beta1
-    - patch: |-
+    - patch: |
         - op: replace
           path: /spec/values/expose
           value:
