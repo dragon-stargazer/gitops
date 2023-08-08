@@ -23,6 +23,11 @@ spec:
       enabled: false
     grafana:
       enabled: true
+      env:
+        GF_USERS_DEFAULT_THEME: light
+      persistence:
+        enabled: enable
+        size: 10Gi
     kubeStateMetrics:
       enabled: true
     nodeExporter:
@@ -31,3 +36,10 @@ spec:
       prometheusSpec:
         podMonitorSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 50Gi
