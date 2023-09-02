@@ -20,7 +20,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: weaveworks
-      version: 4.0.28
+      version: 4.0.29
   interval: 1h
   values:
     adminUser:

@@ -99,9 +99,8 @@ spec:
           size: 10Gi
         trivy:
           size: 10Gi
-      registry:
-        upload_purging:
-          age: 24h
     registry:
       credentials:
         existingSecret: harbor-secret
+      upload_purging:
+        age: 24h
