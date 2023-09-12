@@ -24,7 +24,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: kubernetes-dashboard
-      version: 7.0.0-alpha0
+      version: 7.0.0-alpha1
   interval: 1h
   values:
     app:
