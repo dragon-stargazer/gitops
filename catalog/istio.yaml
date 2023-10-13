@@ -79,22 +79,10 @@ spec:
     - name: istiod
       namespace: istio-system
   interval: 1h
-  postRenderers:
-    - kustomize:
-        patches:
-          - patch: |
-              - op: add
-                path: /spec/ipFamilyPolicy
-                value: PreferDualStack
-            target:
-              group: core
-              kind: Service
-              name: istio-ingressgateway
-              namespace: istio-ingress
-              version: v1
   values:
     imagePullPolicy: IfNotPresent
     service:
+      ipFamilyPolicy: PreferDualStack
       ports:
         - name: status-port
           port: 15021
