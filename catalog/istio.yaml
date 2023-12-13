@@ -12,7 +12,7 @@ spec:
   interval: 24h
   url: https://istio-release.storage.googleapis.com/charts
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: istio-base
@@ -24,10 +24,10 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: istio
-      version: 1.20.0
+      version: 1.20.1
   interval: 1h
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: istiod
@@ -39,7 +39,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: istio
-      version: 1.20.0
+      version: 1.20.1
   dependsOn:
     - name: istio-base
   interval: 1h
@@ -61,7 +61,7 @@ kind: Namespace
 metadata:
   name: istio-ingress
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: istio-ingressgateway
@@ -74,7 +74,7 @@ spec:
         kind: HelmRepository
         name: istio
         namespace: istio-system
-      version: 1.20.0
+      version: 1.20.1
   dependsOn:
     - name: istiod
       namespace: istio-system

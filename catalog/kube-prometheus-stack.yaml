@@ -3,7 +3,7 @@ kind: Namespace
 metadata:
   name: kube-prometheus-stack
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
@@ -16,7 +16,7 @@ spec:
         kind: HelmRepository
         name: prometheus-community
         namespace: kube-system
-      version: 54.2.2
+      version: 55.3.1
   interval: 1h
   values:
     crds:

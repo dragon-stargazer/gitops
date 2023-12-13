@@ -12,7 +12,7 @@ spec:
   interval: 24h
   url: https://charts.min.io
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: minio
@@ -51,7 +51,7 @@ spec:
   interval: 24h
   url: https://helm.goharbor.io
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: harbor

@@ -72,7 +72,7 @@ spec:
         kind: HelmRelease
         name: dex
         namespace: dex
-        version: v2beta1
+        version: v2beta2
     - patch: |
         - op: add
           path: /spec/values/domainFilters
@@ -97,7 +97,7 @@ spec:
         kind: HelmRelease
         name: external-dns
         namespace: external-dns
-        version: v2beta1
+        version: v2beta2
     - patch: |
         - op: replace
           path: /spec/values/expose
@@ -127,7 +127,7 @@ spec:
         kind: HelmRelease
         name: harbor
         namespace: harbor
-        version: v2beta1
+        version: v2beta2
   path: ./clusters/default-overlay/stack
   postBuild:
     substitute:
