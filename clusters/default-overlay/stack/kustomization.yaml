@@ -9,14 +9,17 @@ resources:
   - ../../../catalog/kubernetes-dashboard.yaml
   - ../../../catalog/node-problem-detector.yaml
   - ../../../catalog/prometheus-community.yaml
+  - ../../../catalog/weave-gitops.yaml
   - certificate-dex-ingress.yaml
   - certificate-harbor-ingress.yaml
   - external-secret-cert-manager.yaml
   - external-secret-dex.yaml
   - external-secret-external-dns.yaml
   - external-secret-harbor.yaml
+  - external-secret-weave-gitops.yaml
   - issuer-letsencrypt.yaml
   - sops-doppler-cert-manager.yaml
   - sops-doppler-dex.yaml
   - sops-doppler-external-dns.yaml
   - sops-doppler-harbor.yaml
+  - sops-doppler-weave-gitops.yaml
