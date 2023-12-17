@@ -7,7 +7,6 @@ resources:
   - ../../../catalog/harbor.yaml
   - ../../../catalog/istio.yaml
   - ../../../catalog/kube-prometheus-stack.yaml
-  - ../../../catalog/kubernetes-dashboard.yaml
   - ../../../catalog/node-problem-detector.yaml
   - ../../../catalog/prometheus-community.yaml
   - ../../../catalog/weave-gitops.yaml
