@@ -10,7 +10,6 @@ resources:
   - ../../../catalog/kube-prometheus-stack.yaml
   - ../../../catalog/node-problem-detector.yaml
   - ../../../catalog/prometheus-community.yaml
-  - ../../../catalog/weave-gitops.yaml
   - certificate-dex-ingress.yaml
   - certificate-harbor-ingress.yaml
   - external-secret-cert-manager.yaml
