@@ -16,7 +16,7 @@ spec:
         kind: HelmRepository
         name: prometheus-community
         namespace: kube-system
-      version: 56.16.0
+      version: 57.0.2
   interval: 1h
   values:
     crds:

@@ -24,18 +24,9 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: kubernetes-dashboard
-      version: 7.0.0-alpha1
+      version: 7.1.2
   interval: 1h
   values:
-    app:
-      ingress:
-        enabled: false
-    cert-manager:
-      enabled: false
     extras:
       serviceMonitor:
         enabled: ${ENABLE_SERVICE_MONITOR:=true}
-    metrics-server:
-      enabled: false
-    nginx:
-      enabled: false
