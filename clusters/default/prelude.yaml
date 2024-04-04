@@ -1,0 +1,18 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: prelude
+  namespace: flux-system
+spec:
+  interval: 1h
+  path: ./catalog/prelude/enhanced
+  postBuild:
+    substitute:
+      var_substitution_enabled: "true"
+  prune: true
+  retryInterval: 1m
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  timeout: 5m
+  wait: true
