@@ -121,7 +121,7 @@ spec:
           path: /spec/values/proxy
           value:
             httpsProxy: http://172.24.0.1:6666
-            noProxy: 127.0.0.1,localhost,.local,.internal,.bikeshed.dev
+            noProxy: 127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,localhost,.local,.internal,.bikeshed.dev
       target:
         group: helm.toolkit.fluxcd.io
         kind: HelmRelease
