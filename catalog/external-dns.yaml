@@ -24,7 +24,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: external-dns
-      version: 1.14.3
+      version: 1.14.4
   interval: 1h
   values:
     interval: 10m
