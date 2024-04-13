@@ -16,6 +16,11 @@ resources:
   - external-secret-dex.yaml
   - external-secret-external-dns.yaml
   - external-secret-harbor.yaml
+  - gateway-eg.yaml
+  - gateway-istio.yaml
+  - gateway-namespace.yaml
+  - http-route-capacitor.yaml
+  - http-route-grafana.yaml
   - issuer-letsencrypt.yaml
   - sops-doppler-cert-manager.yaml
   - sops-doppler-dex.yaml
