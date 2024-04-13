@@ -28,6 +28,8 @@ spec:
   interval: 1h
   values:
     enableCertificateOwnerRef: true
+    extraArgs:
+      - --feature-gates=ExperimentalGatewayAPISupport=true
     installCRDs: true
     prometheus:
       servicemonitor:
