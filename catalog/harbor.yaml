@@ -63,7 +63,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: harbor
-      version: 1.14.1
+      version: 1.14.2
   dependsOn:
     - name: minio
   interval: 1h

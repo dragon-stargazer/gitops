@@ -32,6 +32,7 @@ spec:
     serviceMonitor:
       enabled: ${ENABLE_SERVICE_MONITOR:=true}
     sources:
+      - gateway-httproute
       - ingress
     triggerLoopOnEvent: true
     txtOwnerId: external-dns
