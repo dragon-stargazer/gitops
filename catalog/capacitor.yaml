@@ -6,7 +6,7 @@ metadata:
 spec:
   interval: 24h
   ref:
-    tag: v0.4.1
+    tag: v0.4.2
   url: oci://ghcr.io/gimlet-io/capacitor-manifests
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
