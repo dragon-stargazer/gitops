@@ -4,7 +4,7 @@ patches:
   - patch: |
       - op: replace
         path: /spec/template/spec/containers/0/image
-        value: quay.io/kata-containers/kata-deploy:3.3.0
+        value: quay.io/kata-containers/kata-deploy:3.4.0
       - op: replace
         path: /spec/template/spec/containers/0/imagePullPolicy
         value: IfNotPresent
@@ -15,6 +15,6 @@ patches:
       namespace: kube-system
       version: v1
 resources:
-  - https://github.com/kata-containers/kata-containers/raw/3.3.0/tools/packaging/kata-deploy/kata-rbac/base/kata-rbac.yaml
-  - https://github.com/kata-containers/kata-containers/raw/3.3.0/tools/packaging/kata-deploy/kata-deploy/base/kata-deploy.yaml
-  - https://github.com/kata-containers/kata-containers/raw/3.3.0/tools/packaging/kata-deploy/runtimeclasses/kata-runtimeClasses.yaml
+  - https://github.com/kata-containers/kata-containers/raw/3.4.0/tools/packaging/kata-deploy/kata-rbac/base/kata-rbac.yaml
+  - https://github.com/kata-containers/kata-containers/raw/3.4.0/tools/packaging/kata-deploy/kata-deploy/base/kata-deploy.yaml
+  - https://github.com/kata-containers/kata-containers/raw/3.4.0/tools/packaging/kata-deploy/runtimeclasses/kata-runtimeClasses.yaml
