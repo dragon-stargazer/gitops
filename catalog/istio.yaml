@@ -54,6 +54,7 @@ spec:
             ISTIO_DUAL_STACK: "true"
         trustDomain: ${CLUSTER_DOMAIN:=cluster.local}
       pilot:
+        autoscaleEnabled: false
         env:
           ISTIO_DUAL_STACK: "true"
 ---
@@ -82,6 +83,8 @@ spec:
   interval: 1h
   values:
     defaults:
+      autoscaling:
+        enabled: false
       imagePullPolicy: IfNotPresent
       service:
         ipFamilyPolicy: PreferDualStack
