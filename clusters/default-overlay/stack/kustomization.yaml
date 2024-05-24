@@ -5,4 +5,3 @@ resources:
   - ../../../catalog/kata-deploy/k3s
   - ../../../catalog/node-exporter.yaml
   - ../../../catalog/node-problem-detector.yaml
-  - ../../../catalog/prometheus-community.yaml
