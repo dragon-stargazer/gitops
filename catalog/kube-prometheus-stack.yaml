@@ -3,20 +3,30 @@ kind: Namespace
 metadata:
   name: kube-prometheus-stack
 ---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: kube-prometheus-stack
+  namespace: kube-prometheus-stack
+spec:
+  interval: 24h
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
+  ref:
+    tag: 58.7.2
+  url: oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack
+---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
   namespace: kube-prometheus-stack
 spec:
-  chart:
-    spec:
-      chart: kube-prometheus-stack
-      sourceRef:
-        kind: HelmRepository
-        name: prometheus-community
-        namespace: kube-system
-      version: 58.5.3
+  chartRef:
+    kind: OCIRepository
+    name: kube-prometheus-stack
+    namespace: kube-prometheus-stack
   interval: 1h
   values:
     crds:
