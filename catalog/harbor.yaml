@@ -63,7 +63,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: harbor
-      version: 1.14.2
+      version: 1.15.0
   dependsOn:
     - name: minio
   interval: 1h
@@ -82,8 +82,6 @@ spec:
       enabled: true
       serviceMonitor:
         enabled: ${ENABLE_SERVICE_MONITOR:=true}
-    notary:
-      enabled: false
     persistence:
       imageChartStorage:
         disableredirect: true
