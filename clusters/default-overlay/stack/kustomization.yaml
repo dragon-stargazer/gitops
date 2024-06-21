@@ -18,6 +18,7 @@ resources:
   - gateway-eg.yaml
   - gateway-istio.yaml
   - gateway-namespace.yaml
+  - homelab-proxy.yaml
   - http-route-capacitor.yaml
   - http-route-grafana.yaml
   - issuer-letsencrypt.yaml

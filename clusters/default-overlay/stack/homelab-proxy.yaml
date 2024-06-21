@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: homelab-proxy
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: calibre
+  namespace: homelab-proxy
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+---
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+  - addresses:
+      - 172.20.24.10
+kind: EndpointSlice
+metadata:
+  labels:
+    endpointslice.kubernetes.io/managed-by: cluster-admins
+    kubernetes.io/service-name: calibre
+  name: calibre
+  namespace: homelab-proxy
+ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: calibre
+  namespace: homelab-proxy
+spec:
+  hostnames:
+    - calibre.bikeshed.dev
+  parentRefs:
+    - name: eg
+      namespace: watcher
+    - name: istio
+      namespace: watcher
+  rules:
+    - backendRefs:
+        - name: calibre
+          port: 80
