@@ -1,10 +1,10 @@
 apiVersion: v1
 data:
-    DOPPLER_TOKEN: ENC[AES256_GCM,data:Uv48JO+/yiF+US9FHMpH0HtA3E9EoXPjpf0RAGznHsDZCTMCXiBQxtrUpyTPchGvV4pv/WyWwTzYluFyyOydStdwQR2VgZELcyUhNqnnJ9hmQeiBijzXSQh4FPz5cs8RKp5FSmMmS8w=,iv:RVgso46KEfoJhmAooRiNEGX47TtCGbJbb4ATJSiTKDM=,tag:lhnif4lQ0KG+Y7tl54iV7Q==,type:str]
+    DOPPLER_TOKEN: ENC[AES256_GCM,data:NpBPr6x5Yeie9I4WLHKLH7/fw5JZbukWweFcF7bGiXKx800mc1N/WyeBRPWspjnvYavlW6MW5p2f6mJbZAnWTVJYw0W511Lrf5gTnEYxd9lBddXRRSdiTAKYmvA=,iv:dkdh8iOj4skxCpUmlKcW38fxXfTgyF3w1rPlOpv1Z8k=,tag:ixpiVi6sWvgdR6YvejWyvA==,type:str]
 kind: Secret
 metadata:
-    name: doppler-token-cloudflare-credential
-    namespace: cert-manager
+    name: doppler-token-dex-credential
+    namespace: dex
 type: Opaque
 sops:
     kms: []
@@ -21,8 +21,8 @@ sops:
             VkJPK2tKUGZkMGFTZGVmR2ZCbThSL0EKA6TdiGUTVdiKU+a3phLSKC/+Id9DhKhw
             Fs3goowYm7p7e5ri+Mj9AdPZNessyh9W04hKsireWmJnvVJIicDzOA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-07-06T13:29:10Z"
-    mac: ENC[AES256_GCM,data:xQLwn2Jkh10D8thgWasQRLW9Lze7B8lb5B+iLUqMP9/PvfAvynC3xtPwhVGOFsdh9sJ28MjZAZugnGmhqtQmG6cMnQKugaI0DIGVvMqHUJIHh0/iCYFZbAKQjU/DBxPDifJZnALpJM3Aae2oupIMQAtHkZmgcJbmp6dCBHrEg7g=,iv:XSWbCN224VN6E6VgnOVdCnPTRmzfjC8VdKU3mXfB68I=,tag:CtZKL4H6/gQtfPvr7YQSkA==,type:str]
+    lastmodified: "2024-07-15T11:07:38Z"
+    mac: ENC[AES256_GCM,data:laHcoq0PC+BEkxcGb+kdxUrJd2uNJGRkkdZcrZrug25nmlWwMW2E8AUvSaUNle6qZGawsPWIzi1uN11ca/EltUQKVdYFO35AkQwtBvOF0npOXvizh7c41bK13e+e7WMO+5uGAy6r2k3+iZKRWbtoJ5xN2LKRHuSH7ILdY1On5A8=,iv:aGXFChM93vPr8Bi8YO8nWz/ZB8uy6SB6uxy/jfVbzSg=,tag:gCaTm3FlMUXidCBj61C9Vw==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
-    version: 3.7.3
+    version: 3.8.1
