@@ -1,0 +1,28 @@
+apiVersion: v1
+data:
+    DOPPLER_TOKEN: ENC[AES256_GCM,data:0jI3BblODOULOgliHwccp3E2QafEikrSfugu7nmDj3TwAFCTD3B3LUJJ1uo3j9kqr2Zt3L9HiJktOXtgd1NS4iLregfLo7ufmH5/yRG4dBUGhzK0WWjn5rNkBHNwERLy4nsgVg==,iv:/H3fvekazwLCOcG2fwYAZQBspDUTI23ef7hxZExGB7A=,tag:/iGpgmfZ6txHTESkic7ebg==,type:str]
+kind: Secret
+metadata:
+    name: doppler-token-grafana-secret
+    namespace: kube-prometheus-stack
+type: Opaque
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: <concealed by 1Password>
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBjd3h4TndqeURQeUhJNzJj
+            dUgxYlp4Nm9nbnlocVRDUzVZMFM0eHhzamhFCitROU9GZDdiRHE1Qzl4MklQSVdx
+            bFJqbkFDcmhKTkJJN245Sit2ejNyNEUKLS0tIHBMck1pY2NHdHJTYmNLU1RMNUd6
+            b0tRNkhPM0psNnNKbFVWZEN4Q3NFUFkKXrq1dCZMdKDYdfcX8PxbqtD/u6t5sQo7
+            pklQRjTVOptp4NzbuqYKAAVj2/mu3bphbSAbRLSbBNnPNKtQiil2gw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-07-15T11:32:03Z"
+    mac: ENC[AES256_GCM,data:fhj10GVCTA8AIuUPFA29GP843pQNUOkPr2tm4ePQt8byFuo6xBDj5cO2d2GexdJIFj0gwW2bmEsmUWVHViIVqu5twAaaSFbFOW5a0UtycjfhQPusR6DHWufG4pzLDrvmX0WwtvptMYvm9wxGMNSZmc3YuHzAQHCKWy1M9XmArPs=,iv:ofr+BueblA7Z/L1GA7znRPzVG+3U5R64FSRTdhxI5CM=,tag:R9CQz1WKphQGY7Ob+MiwRw==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1

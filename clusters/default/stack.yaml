@@ -4,10 +4,40 @@ metadata:
   name: stack
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   dependsOn:
     - name: prelude
   interval: 1h
-  path: ./clusters/default-overlay/stack
+  patches:
+    - patch: |
+        - op: add
+          path: /spec/values/domainFilters
+          value:
+            - bikeshed.dev
+        - op: add
+          path: /spec/values/env
+          value:
+            - name: CF_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: CF_API_TOKEN
+                  name: cloudflare-credential
+        - op: add
+          path: /spec/values/provider
+          value: cloudflare
+        - op: replace
+          path: /spec/values/txtOwnerId
+          value: local-k3s
+      target:
+        group: helm.toolkit.fluxcd.io
+        kind: HelmRelease
+        name: external-dns
+        namespace: external-dns
+        version: v2
+  path: ./clusters/overlay/default/stack
   postBuild:
     substitute:
       var_substitution_enabled: "true"

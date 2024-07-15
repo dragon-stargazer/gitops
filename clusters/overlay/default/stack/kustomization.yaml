@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../../catalog/capacitor.yaml
+  - ../../../catalog/external-dns.yaml
+  - ../../../catalog/istio.yaml
+  - ../../../catalog/kata-deploy/k3s
+  - ../../../catalog/kube-prometheus-stack.yaml
+  - ../../../catalog/node-problem-detector.yaml
+  - external-secret-cert-manager.yaml
+  - external-secret-external-dns.yaml
+  - external-secret-grafana.yaml
+  - gateway-istio.yaml
+  - gateway-namespace.yaml
+  - http-route-grafana.yaml
+  - http-route-prometheus.yaml
+  - issuer-letsencrypt.yaml
+  - sops-doppler-cert-manager.yaml
+  - sops-doppler-external-dns.yaml
+  - sops-doppler-grafana.yaml

@@ -1,0 +1,28 @@
+apiVersion: v1
+data:
+    DOPPLER_TOKEN: ENC[AES256_GCM,data:p1HuWWY4W3QuaUAIwck0hP/QXWaGkXvEn5D2V1burJ9IZC2sROcYZtswn1dmifPi6uvjKRoIjLS5N3E1hMRrYdDtI2SCZqoAYTB0b09aaf/DbBzbRS26qAMpq/dMkUVZ1VpDKCbU0W19x2CY,iv:fS4mqQ5DF9DSb9zyb+EoMGRiDingEz2JO9a+7apEy8w=,tag:qlj8piuRlLAIvdUNX+t8Nw==,type:str]
+kind: Secret
+metadata:
+    name: doppler-token-cloudflare-credential
+    namespace: external-dns
+type: Opaque
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: <concealed by 1Password>
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBBdEhLa0ljV0FIUXlmaFV1
+            ODhoVUM2MWFWWWNNK05ZMFR6ZkFwYWdiZFVZCk8zODdaT3pndTNXMS9LU0VpelBH
+            TEs3TEZGcHNnUi9IOG5tcUlsU2g1cTgKLS0tIHN0YkJHVm8rNng2OUZmNFRPem4r
+            SEpWbGxaN1pWb1dnYkdaM2txY21UemsKJy/P8rgEsSWJyzsnUpmED2Jge1lMhW6n
+            F/jY2WKV0C0ZPOrL5DDiDL9GD0dqIP1wcK6eKaFRvED9ZBv431+vVQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-07-15T11:31:31Z"
+    mac: ENC[AES256_GCM,data:jgGMm3KUc7A0UqEBRVUJ3czZxdkFcP0EC3yTPCRhKczXjlLEJcBVeTgm10Lq0gKCVaLrKPVF0Wp1FVti4TtYXtIZZwupvIjlQwp7VNs2HEP0TsyKjviEei+EuDNxZAuucA0ITzyi/fE/KSSsi8tRqj4wNNhwe5Gh5RZ/+EEP2wQ=,iv:hmcXzcTudW87FnhvXvkCu53nAlu9dW/JyA3n7mO+vic=,tag:Fb6VwR3047f9feb4XVjmzQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1
