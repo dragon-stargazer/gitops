@@ -29,22 +29,31 @@ spec:
     namespace: kube-prometheus-stack
   interval: 1h
   values:
+    alertmanager:
+      enabled: true
     crds:
       enabled: false
     grafana:
+      admin:
+        existingSecret: grafana-secret
       enabled: true
       env:
         GF_USERS_DEFAULT_THEME: light
       persistence:
-        enabled: enable
+        enabled: true
         size: 10Gi
     kubeStateMetrics:
       enabled: true
     nodeExporter:
       enabled: true
     prometheus:
+      agentMode: false
       prometheusSpec:
+        enableRemoteWriteReceiver: true
+        externalLabels: {}
         podMonitorSelectorNilUsesHelmValues: false
+        remoteWrite: []
+        retention: 15d
         serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
           volumeClaimTemplate:
