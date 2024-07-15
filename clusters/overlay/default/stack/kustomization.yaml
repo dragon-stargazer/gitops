@@ -20,7 +20,6 @@ resources:
   - gateway-namespace.yaml
   - homelab-proxy.yaml
   - http-route-capacitor.yaml
-  - http-route-grafana.yaml
   - issuer-letsencrypt.yaml
   - sops-doppler-cert-manager.yaml
   - sops-doppler-dex.yaml
