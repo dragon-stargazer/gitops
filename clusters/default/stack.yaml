@@ -30,16 +30,32 @@ spec:
           value: cloudflare
         - op: replace
           path: /spec/values/txtOwnerId
-          value: local-k3s
+          value: ${CLUSTER_NAME}
       target:
         group: helm.toolkit.fluxcd.io
         kind: HelmRelease
         name: external-dns
         namespace: external-dns
         version: v2
+    - patch: |
+        - op: replace
+          path: /spec/values/prometheus/prometheusSpec/scrapeClasses
+          value:
+            - default: true
+              name: default
+              relabelings:
+                - replacement: ${CLUSTER_NAME}
+                  targetLabel: cluster
+      target:
+        group: helm.toolkit.fluxcd.io
+        kind: HelmRelease
+        name: kube-prometheus-stack
+        namespace: kube-prometheus-stack
+        version: v2
   path: ./clusters/overlay/default/stack
   postBuild:
     substitute:
+      CLUSTER_NAME: local-k3s
       var_substitution_enabled: "true"
   prune: true
   retryInterval: 1m
