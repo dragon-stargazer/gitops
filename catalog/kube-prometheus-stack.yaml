@@ -42,6 +42,11 @@ spec:
       persistence:
         enabled: true
         size: 10Gi
+      sidecar:
+        dashboards:
+          multicluster:
+            global:
+              enabled: true
     kubeStateMetrics:
       enabled: true
     nodeExporter:
@@ -54,6 +59,7 @@ spec:
         podMonitorSelectorNilUsesHelmValues: false
         remoteWrite: []
         retention: 15d
+        scrapeClasses: []
         serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
           volumeClaimTemplate:
