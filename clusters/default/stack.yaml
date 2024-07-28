@@ -89,9 +89,6 @@ spec:
         - op: add
           path: /spec/values/provider
           value: cloudflare
-        - op: replace
-          path: /spec/values/txtOwnerId
-          value: ${CLUSTER_NAME}
       target:
         group: helm.toolkit.fluxcd.io
         kind: HelmRelease
@@ -145,7 +142,7 @@ spec:
         - op: add
           path: /spec/values/proxy
           value:
-            httpsProxy: http://172.24.0.1:6666
+            httpsProxy: http://172.20.24.10:6666
             noProxy: 127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,localhost,.local,.internal,.bikeshed.dev
       target:
         group: helm.toolkit.fluxcd.io
@@ -153,6 +150,20 @@ spec:
         name: harbor
         namespace: harbor
         version: v2
+    - patch: |
+        - op: add
+          path: /spec/secretRef
+          value:
+            name: oci-credential
+        - op: replace
+          path: /spec/url
+          value: oci://harbor.bikeshed.dev:31443/docker.io/envoyproxy
+      target:
+        group: source.toolkit.fluxcd.io
+        kind: HelmRepository
+        name: envoyproxy
+        namespace: envoy-gateway-system
+        version: v1
   path: ./clusters/overlay/default/stack
   postBuild:
     substitute:
