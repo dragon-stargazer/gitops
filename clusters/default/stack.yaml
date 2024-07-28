@@ -28,9 +28,6 @@ spec:
         - op: add
           path: /spec/values/provider
           value: cloudflare
-        - op: replace
-          path: /spec/values/txtOwnerId
-          value: ${CLUSTER_NAME}
       target:
         group: helm.toolkit.fluxcd.io
         kind: HelmRelease
