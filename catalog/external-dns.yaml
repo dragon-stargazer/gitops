@@ -35,5 +35,5 @@ spec:
       - gateway-httproute
       - ingress
     triggerLoopOnEvent: true
-    txtOwnerId: external-dns
+    txtOwnerId: ${CLUSTER_NAME:=external-dns}
     txtPrefix: external-dns-
