@@ -24,7 +24,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: istio
-      version: 1.22.3
+      version: 1.23.0
   interval: 1h
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
@@ -39,24 +39,23 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: istio
-      version: 1.22.3
+      version: 1.23.0
   dependsOn:
     - name: istio-base
   interval: 1h
   values:
-    defaults:
-      global:
-        proxy:
-          clusterDomain: ${CLUSTER_DOMAIN:=cluster.local}
-      meshConfig:
-        defaultConfig:
-          proxyMetadata:
-            ISTIO_DUAL_STACK: "true"
-        trustDomain: ${CLUSTER_DOMAIN:=cluster.local}
-      pilot:
-        autoscaleEnabled: false
-        env:
+    global:
+      proxy:
+        clusterDomain: ${CLUSTER_DOMAIN:=cluster.local}
+    meshConfig:
+      defaultConfig:
+        proxyMetadata:
           ISTIO_DUAL_STACK: "true"
+      trustDomain: ${CLUSTER_DOMAIN:=cluster.local}
+    pilot:
+      autoscaleEnabled: false
+      env:
+        ISTIO_DUAL_STACK: "true"
 ---
 apiVersion: v1
 kind: Namespace
@@ -76,34 +75,33 @@ spec:
         kind: HelmRepository
         name: istio
         namespace: istio-system
-      version: 1.22.3
+      version: 1.23.0
   dependsOn:
     - name: istiod
       namespace: istio-system
   interval: 1h
   values:
-    defaults:
-      autoscaling:
-        enabled: false
-      imagePullPolicy: IfNotPresent
-      service:
-        ipFamilyPolicy: PreferDualStack
-        ports:
-          - name: status-port
-            port: 15021
-            protocol: TCP
-            targetPort: 15021
-          - name: http2
-            nodePort: 31080
-            port: 80
-            protocol: TCP
-            targetPort: 80
-          - name: https
-            nodePort: 31443
-            port: 443
-            protocol: TCP
-            targetPort: 443
-        type: NodePort
+    autoscaling:
+      enabled: false
+    imagePullPolicy: IfNotPresent
+    service:
+      ipFamilyPolicy: PreferDualStack
+      ports:
+        - name: status-port
+          port: 15021
+          protocol: TCP
+          targetPort: 15021
+        - name: http2
+          nodePort: 31080
+          port: 80
+          protocol: TCP
+          targetPort: 80
+        - name: https
+          nodePort: 31443
+          port: 443
+          protocol: TCP
+          targetPort: 443
+      type: NodePort
 ---
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
