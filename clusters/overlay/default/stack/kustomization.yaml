@@ -15,6 +15,7 @@ resources:
   - external-secret-dex.yaml
   - external-secret-external-dns.yaml
   - external-secret-harbor.yaml
+  - external-secret-oci-credential.yaml
   - gateway-eg.yaml
   - gateway-istio.yaml
   - gateway-namespace.yaml
