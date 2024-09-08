@@ -51,5 +51,5 @@ spec:
   provider:
     kubernetes:
       envoyService:
-        type: NodePort
+        type: ${GATEWAY_SERVICE_TYPE:=NodePort}
     type: Kubernetes
