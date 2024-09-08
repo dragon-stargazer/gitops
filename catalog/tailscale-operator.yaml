@@ -20,7 +20,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: tailscale
+      chart: tailscale-operator
       sourceRef:
         kind: HelmRepository
         name: tailscale
