@@ -113,7 +113,7 @@ spec:
           path: /spec/values/prometheus/prometheusSpec/remoteWrite
           value:
             - name: ${CLUSTER_NAME}
-              url: https://prometheus.bikeshed.dev:31000/api/v1/write
+              url: https://prometheus.bikeshed.dev/api/v1/write
       target:
         group: helm.toolkit.fluxcd.io
         kind: HelmRelease
