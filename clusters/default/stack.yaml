@@ -53,6 +53,7 @@ spec:
   postBuild:
     substitute:
       CLUSTER_NAME: local-k3s
+      GATEWAY_SERVICE_TYPE: LoadBalancer
       var_substitution_enabled: "true"
   prune: true
   retryInterval: 1m

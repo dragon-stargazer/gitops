@@ -5,8 +5,7 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt
     cert-manager.io/private-key-algorithm: ECDSA
     cert-manager.io/private-key-rotation-policy: Always
-    external-dns.alpha.kubernetes.io/target: 172.20.24.11,fd00:ebee:172:2024::11
-    networking.istio.io/service-type: NodePort
+    networking.istio.io/service-type: ${GATEWAY_SERVICE_TYPE:=NodePort}
   name: istio
   namespace: watcher
 spec:
