@@ -25,19 +25,19 @@ spec:
                       teams:
                         - infra
                         - sre
-                  redirectURI: https://auth.bikeshed.dev:31443/dex/callback
+                  redirectURI: https://auth.bikeshed.dev/dex/callback
                 id: github
                 name: GitHub
                 type: github
             enablePasswordDB: false
-            issuer: https://auth.bikeshed.dev:31443/dex
+            issuer: https://auth.bikeshed.dev/dex
             oauth2:
               skipApprovalScreen: true
             staticClients:
               - idEnv: STATIC_CLIENT_ID_HARBOR
                 name: Harbor
                 redirectURIs:
-                  - https://harbor.bikeshed.dev:31443/c/oidc/callback
+                  - https://harbor.bikeshed.dev/c/oidc/callback
                 secretEnv: STATIC_CLIENT_SECRET_HARBOR
             storage:
               config:
@@ -55,7 +55,6 @@ spec:
               cert-manager.io/cluster-issuer: letsencrypt
               cert-manager.io/private-key-algorithm: ECDSA
               cert-manager.io/private-key-rotation-policy: Always
-              external-dns.alpha.kubernetes.io/target: 172.20.24.10,fd00:ebee:172:2024::10
             className: istio
             enabled: true
             hosts:
@@ -129,7 +128,6 @@ spec:
                 cert-manager.io/cluster-issuer: letsencrypt
                 cert-manager.io/private-key-algorithm: ECDSA
                 cert-manager.io/private-key-rotation-policy: Always
-                external-dns.alpha.kubernetes.io/target: 172.20.24.10,fd00:ebee:172:2024::10
               className: istio
               hosts:
                 core: harbor.bikeshed.dev
@@ -138,7 +136,7 @@ spec:
             type: ingress
         - op: replace
           path: /spec/values/externalURL
-          value: https://harbor.bikeshed.dev:31443
+          value: https://harbor.bikeshed.dev
         - op: add
           path: /spec/values/proxy
           value:
@@ -157,7 +155,7 @@ spec:
             name: oci-credential
         - op: replace
           path: /spec/url
-          value: oci://harbor.bikeshed.dev:31443/docker.io/envoyproxy
+          value: oci://harbor.bikeshed.dev/docker.io/envoyproxy
       target:
         group: source.toolkit.fluxcd.io
         kind: HelmRepository
@@ -168,6 +166,7 @@ spec:
   postBuild:
     substitute:
       CLUSTER_NAME: harbor
+      GATEWAY_SERVICE_TYPE: LoadBalancer
       var_substitution_enabled: "true"
   prune: true
   retryInterval: 1m
