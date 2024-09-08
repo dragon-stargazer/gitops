@@ -40,4 +40,4 @@ spec:
         nodePorts:
           http: 32080
           https: 32443
-        type: NodePort
+        type: ${GATEWAY_SERVICE_TYPE:=NodePort}
