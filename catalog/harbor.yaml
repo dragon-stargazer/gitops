@@ -39,8 +39,10 @@ spec:
       size: 50Gi
     replicas: 1
     resources:
-      requests:
+      limits:
         memory: 512Mi
+      requests:
+        memory: 256Mi
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
