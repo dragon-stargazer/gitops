@@ -55,6 +55,7 @@ spec:
               cert-manager.io/cluster-issuer: letsencrypt
               cert-manager.io/private-key-algorithm: ECDSA
               cert-manager.io/private-key-rotation-policy: Always
+              external-dns.alpha.kubernetes.io/target: 100.79.120.13
             className: istio
             enabled: true
             hosts:
@@ -128,6 +129,7 @@ spec:
                 cert-manager.io/cluster-issuer: letsencrypt
                 cert-manager.io/private-key-algorithm: ECDSA
                 cert-manager.io/private-key-rotation-policy: Always
+                external-dns.alpha.kubernetes.io/target: 100.79.120.13
               className: istio
               hosts:
                 core: harbor.bikeshed.dev
