@@ -56,6 +56,45 @@ spec:
       autoscaleEnabled: false
       env:
         ISTIO_DUAL_STACK: "true"
+    profile: ambient
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: istio-cni
+  namespace: istio-system
+spec:
+  chart:
+    spec:
+      chart: cni
+      sourceRef:
+        kind: HelmRepository
+        name: istio
+      version: 1.24.0
+  dependsOn:
+    - name: istiod
+  interval: 1h
+  values:
+    profile: ambient
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ztunnel
+  namespace: istio-system
+spec:
+  chart:
+    spec:
+      chart: ztunnel
+      sourceRef:
+        kind: HelmRepository
+        name: istio
+      version: 1.24.0
+  dependsOn:
+    - name: istiod
+  interval: 1h
+  values:
+    profile: ambient
 ---
 apiVersion: v1
 kind: Namespace
@@ -65,7 +104,7 @@ metadata:
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: istio-ingressgateway
+  name: istio-ingress
   namespace: istio-ingress
 spec:
   chart:
