@@ -6,47 +6,6 @@ metadata:
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: minio
-  namespace: harbor
-spec:
-  interval: 24h
-  url: https://charts.min.io
----
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
-metadata:
-  name: minio
-  namespace: harbor
-spec:
-  chart:
-    spec:
-      chart: minio
-      sourceRef:
-        kind: HelmRepository
-        name: minio
-      version: 5.3.0
-  interval: 1h
-  values:
-    buckets:
-      - name: harbor
-    existingSecret: minio-secret
-    metrics:
-      serviceMonitor:
-        enabled: ${ENABLE_SERVICE_MONITOR:=true}
-        includeNode: true
-    mode: standalone
-    persistence:
-      size: 50Gi
-    replicas: 1
-    resources:
-      limits:
-        memory: 512Mi
-      requests:
-        memory: 256Mi
----
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
   name: harbor
   namespace: harbor
 spec:
@@ -66,8 +25,6 @@ spec:
         kind: HelmRepository
         name: harbor
       version: 1.16.0
-  dependsOn:
-    - name: minio
   interval: 1h
   values:
     existingSecretAdminPassword: harbor-secret
@@ -90,7 +47,7 @@ spec:
         s3:
           bucket: harbor
           existingSecret: harbor-secret
-          regionendpoint: http://minio.harbor:9000
+          regionendpoint: http://seaweedfs-s3.seaweedfs:8333
         type: s3
       persistentVolumeClaim:
         database:
