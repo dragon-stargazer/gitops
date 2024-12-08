@@ -9,6 +9,7 @@ resources:
   - ../../../../catalog/istio.yaml
   - ../../../../catalog/kube-prometheus-stack.yaml
   - ../../../../catalog/node-problem-detector.yaml
+  - ../../../../catalog/seaweedfs.yaml
   - ../../../../catalog/tailscale-operator.yaml
   - certificate-dex-ingress.yaml
   - certificate-harbor-ingress.yaml
