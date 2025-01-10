@@ -1,11 +1,16 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
 metadata:
   name: node-problem-detector
   namespace: kube-system
 spec:
   interval: 24h
-  url: https://charts.deliveryhero.io
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
+  ref:
+    tag: 2.3.16
+  url: oci://ghcr.io/deliveryhero/helm-charts/node-problem-detector
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -13,13 +18,10 @@ metadata:
   name: node-problem-detector
   namespace: kube-system
 spec:
-  chart:
-    spec:
-      chart: node-problem-detector
-      sourceRef:
-        kind: HelmRepository
-        name: node-problem-detector
-      version: 2.3.16
+  chartRef:
+    kind: OCIRepository
+    name: node-problem-detector
+    namespace: kube-system
   interval: 1h
   values:
     metrics:
