@@ -1,5 +1,5 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - https://github.com/digitalocean/csi-digitalocean/raw/master/deploy/kubernetes/releases/csi-digitalocean-v4.12.0/crds.yaml
-  - https://github.com/digitalocean/csi-digitalocean/raw/master/deploy/kubernetes/releases/csi-digitalocean-v4.12.0/driver.yaml
+  - https://github.com/digitalocean/csi-digitalocean/raw/master/deploy/kubernetes/releases/csi-digitalocean-v4.13.0/crds.yaml
+  - https://github.com/digitalocean/csi-digitalocean/raw/master/deploy/kubernetes/releases/csi-digitalocean-v4.13.0/driver.yaml
