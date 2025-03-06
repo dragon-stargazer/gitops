@@ -24,7 +24,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: dex
-      version: 0.20.0
+      version: 0.22.1
   interval: 1h
   values:
     serviceMonitor:
