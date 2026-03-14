@@ -23,7 +23,6 @@ resources:
   - gateway-istio.yaml
   - gateway-namespace.yaml
   - homelab-proxy.yaml
-  - http-route-capacitor.yaml
   - http-route-grafana.yaml
   - http-route-prometheus.yaml
   - issuer-letsencrypt.yaml
