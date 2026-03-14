@@ -14,6 +14,81 @@ spec:
   patches:
     - patch: |
         - op: add
+          path: /spec/values/config
+          value:
+            connectors:
+              - config:
+                  clientID: $GITHUB_CLIENT_ID
+                  clientSecret: $GITHUB_CLIENT_SECRET
+                  orgs:
+                    - name: dragon-stargazer
+                      teams:
+                        - infra
+                        - sre
+                  redirectURI: https://auth.bikeshed.dev/dex/callback
+                id: github
+                name: GitHub
+                type: github
+            enablePasswordDB: false
+            issuer: https://auth.bikeshed.dev/dex
+            oauth2:
+              skipApprovalScreen: true
+            staticClients:
+              - idEnv: STATIC_CLIENT_ID_HARBOR
+                name: Harbor
+                redirectURIs:
+                  - https://harbor.bikeshed.dev/c/oidc/callback
+                secretEnv: STATIC_CLIENT_SECRET_HARBOR
+            storage:
+              config:
+                inCluster: true
+              type: kubernetes
+        - op: add
+          path: /spec/values/envFrom
+          value:
+            - secretRef:
+                name: dex-credential
+        - op: add
+          path: /spec/values/ingress
+          value:
+            annotations:
+              cert-manager.io/cluster-issuer: letsencrypt
+              cert-manager.io/private-key-algorithm: ECDSA
+              cert-manager.io/private-key-rotation-policy: Always
+              external-dns.alpha.kubernetes.io/target: 100.100.192.31
+            className: istio
+            enabled: true
+            hosts:
+              - host: auth.bikeshed.dev
+                paths:
+                  - path: /dex/
+                    pathType: Prefix
+            tls:
+              - hosts:
+                  - auth.bikeshed.dev
+                secretName: dex-ingress
+      target:
+        group: helm.toolkit.fluxcd.io
+        kind: HelmRelease
+        name: dex
+        namespace: dex
+        version: v2
+    - patch: |
+        - op: add
+          path: /spec/secretRef
+          value:
+            name: oci-credential
+        - op: replace
+          path: /spec/url
+          value: oci://harbor.bikeshed.dev/docker.io/envoyproxy
+      target:
+        group: source.toolkit.fluxcd.io
+        kind: HelmRepository
+        name: envoyproxy
+        namespace: envoy-gateway-system
+        version: v1
+    - patch: |
+        - op: add
           path: /spec/values/domainFilters
           value:
             - bikeshed.dev
@@ -36,6 +111,36 @@ spec:
         version: v2
     - patch: |
         - op: replace
+          path: /spec/values/expose
+          value:
+            ingress:
+              annotations:
+                cert-manager.io/cluster-issuer: letsencrypt
+                cert-manager.io/private-key-algorithm: ECDSA
+                cert-manager.io/private-key-rotation-policy: Always
+                external-dns.alpha.kubernetes.io/target: 100.100.192.31
+              className: istio
+              hosts:
+                core: harbor.bikeshed.dev
+            tls:
+              enabled: true
+            type: ingress
+        - op: replace
+          path: /spec/values/externalURL
+          value: https://harbor.bikeshed.dev
+        - op: add
+          path: /spec/values/proxy
+          value:
+            httpsProxy: http://172.20.24.11:6666
+            noProxy: 127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,localhost,.local,.internal,.bikeshed.dev
+      target:
+        group: helm.toolkit.fluxcd.io
+        kind: HelmRelease
+        name: harbor
+        namespace: harbor
+        version: v2
+    - patch: |
+        - op: replace
           path: /spec/values/prometheus/prometheusSpec/scrapeClasses
           value:
             - default: true
@@ -43,6 +148,25 @@ spec:
               relabelings:
                 - replacement: ${CLUSTER_NAME}
                   targetLabel: cluster
+        # Agent Mode
+        #- op: replace
+        #  path: /spec/values/alertmanager/enabled
+        #  value: false
+        #- op: replace
+        #  path: /spec/values/grafana/enabled
+        #  value: false
+        #- op: replace
+        #  path: /spec/values/prometheus/agentMode
+        #  value: true
+        #- op: replace
+        #  path: /spec/values/prometheus/prometheusSpec/externalLabels
+        #  value:
+        #    cluster: ${CLUSTER_NAME}
+        #- op: replace
+        #  path: /spec/values/prometheus/prometheusSpec/remoteWrite
+        #  value:
+        #    - name: ${CLUSTER_NAME}
+        #      url: https://prometheus.bikeshed.dev/api/v1/write
       target:
         group: helm.toolkit.fluxcd.io
         kind: HelmRelease

@@ -1,21 +1,34 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../../../catalog/capacitor.yaml
+  - ../../../../catalog/dex.yaml
+  - ../../../../catalog/envoy-gateway.yaml
   - ../../../../catalog/external-dns.yaml
+  - ../../../../catalog/harbor.yaml
   - ../../../../catalog/istio.yaml
   - ../../../../catalog/kata-deploy/k3s
   - ../../../../catalog/kube-prometheus-stack.yaml
   - ../../../../catalog/node-problem-detector.yaml
+  - ../../../../catalog/seaweedfs.yaml
   - ../../../../catalog/tailscale-operator.yaml
+  - certificate-dex-ingress.yaml
+  - certificate-harbor-ingress.yaml
   - external-secret-cert-manager.yaml
+  - external-secret-dex.yaml
   - external-secret-external-dns.yaml
   - external-secret-grafana.yaml
+  - external-secret-harbor.yaml
+  - external-secret-oci-credential.yaml
+  - gateway-eg.yaml
   - gateway-istio.yaml
   - gateway-namespace.yaml
+  - homelab-proxy.yaml
+  - http-route-capacitor.yaml
   - http-route-grafana.yaml
   - http-route-prometheus.yaml
   - issuer-letsencrypt.yaml
   - sops-doppler-cert-manager.yaml
+  - sops-doppler-dex.yaml
   - sops-doppler-external-dns.yaml
   - sops-doppler-grafana.yaml
+  - sops-doppler-harbor.yaml

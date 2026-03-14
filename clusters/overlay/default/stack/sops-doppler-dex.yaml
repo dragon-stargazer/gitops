@@ -1,0 +1,23 @@
+apiVersion: v1
+data:
+    DOPPLER_TOKEN: ENC[AES256_GCM,data:kS4+ZQNuPvyca1163Ms6oDg1A5aR3qPfFUCV3ta92C0dxsNwP8MrCrqQPW1JCqC7VcX/hpt78zYAohVsrWlPTQ+Tf3MSCDs0qel2L0qrAz+PbkAOLSLczUaeAi9orqKy,iv:4BHkZTD6kBoyH0xhK8SC3br5qOE2yeVsCskfC5wFR/w=,tag:j3252mpFmnEOd5oV5zIN9Q==,type:str]
+kind: Secret
+metadata:
+    name: doppler-token-dex-credential
+    namespace: dex
+type: Opaque
+sops:
+    age:
+        - recipient: age1dt6l96yjfvjfat8c4cs6hwz64hh8zzs2wpjw0u609srddxzppvgsd63jsd
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSArK1U3KzExYzFlTDNGUlM2
+            QnMzVFhtUktCcFJyWVZHSnhBOWlrbkhmQ1VrCmV6UXl2MFZycXNvR0RqL3R5NEtP
+            UEhNOXVobE9YeVVsbGwwSVIweFVLV0EKLS0tIHpnM3g1OHJEcm5UZU5EMHBFZi9N
+            OHV2TVZBKytKaU85UDl6NVdLN0NJejgKrHLM7NSpj6a3wR73qaHE3DaKzskKn14/
+            +6jAMJvTMg7HrGtVdnqfMsCTgnhWZzzJj3eTflTSqS09/1yl9lhaxw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2026-03-14T13:41:06Z"
+    mac: ENC[AES256_GCM,data:UJMS6jRrXNLhm/eFFkwUji+Zom0czpU6Wb/cW5UJmiSfDcyGPVyqfVCeOewFdaZA6PvcouyR5q6H8RjHv9K1cl4VaAVlmXXunH8yrrKsQj4k1g441qg0MAAIOxsop6O0h/Gm6i1hToBR4p3B/ZfsVjcnQk/1EIHjvMKLz0jYoUc=,iv:EA6Dz0ehz8rIWcKP8FuOj6IZ4vhG3DyUwcq1B/Rbhpg=,tag:VeRkKQaJbvdoF1ifG1EkYg==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.12.1

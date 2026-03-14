@@ -1,0 +1,23 @@
+apiVersion: v1
+data:
+    DOPPLER_TOKEN: ENC[AES256_GCM,data:lF55TLMoCGUGelYdnF5ycqm1BAimDBLi/BSVBOjOAE9TWBsCK9jBRBakU6MZYvZrryx+vtuHAT47Q18YY4SVYxCveGB99OqZg5+W/Gp1BDhccg+Gz+sC8nWbcEFgYxjtpnxylw==,iv:TT1xfpleAkNKfQ2Suv+2QHf6SZ7S4WeDlFqlaul66PM=,tag:moL8cR8XqFbmT6pitg42IA==,type:str]
+kind: Secret
+metadata:
+    name: doppler-token-harbor-secret
+    namespace: harbor
+type: Opaque
+sops:
+    age:
+        - recipient: age1dt6l96yjfvjfat8c4cs6hwz64hh8zzs2wpjw0u609srddxzppvgsd63jsd
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBFRlpxM3hVbU5oa3ZvZ2Nm
+            WE81R09qVGtaaXg3YWtDQnRMTkZDRjZQa1FnCmdFRnE3TzlndU1GYWRzSWxlckZT
+            OWdLTUFRY3IvanhwaDRBOEp3RTJwV1kKLS0tIFlYNGd5ZHNRSWZLb3dabEZ1ZU9s
+            VHl4K3JFQXFxUDQ5SytDTTZ5NEluZzgK91yU4fCy7v7LN7fz2ck5Ag4Szke+2kpj
+            L6HMALJkDwsOGbVoX8USFQa1MI53F6SAdRevqQVhh6T7YRRl86mBYw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2026-03-14T13:41:34Z"
+    mac: ENC[AES256_GCM,data:wGmqzWIksm1mZbELK1JsBQaAIOM18U5hOdJB78H8nCvBt9CUH1cTS5KjVsUzvvDbDZPlJfDTOnFCfKwBp1tTm1385rWNXYbe9ggIYt+szo9F06WfpeCL19RJQP5VW6NpvY58rScJh0RrFVnBWehqDgbNddLTlI6ZPhy9OADT7IU=,iv:XAR1G3LiGjtwZmMlG3RRPlyGbbyOBUpb10a2RlijOQ4=,tag:XOB8htU6QkwOZ66LLJ1r3Q==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.12.1
