@@ -24,14 +24,14 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: jetstack
-      version: 1.17.1
+      version: 1.20.0
   interval: 1h
   values:
+    config:
+      enableGatewayAPI: true
     crds:
       enabled: true
     enableCertificateOwnerRef: true
-    extraArgs:
-      - --enable-gateway-api
     prometheus:
       servicemonitor:
         enabled: ${ENABLE_SERVICE_MONITOR:=true}
