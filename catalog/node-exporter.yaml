@@ -1,4 +1,4 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
   name: node-exporter
@@ -9,7 +9,7 @@ spec:
     mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
     operation: copy
   ref:
-    tag: 4.44.1
+    tag: 4.52.0
   url: oci://ghcr.io/prometheus-community/charts/prometheus-node-exporter
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
