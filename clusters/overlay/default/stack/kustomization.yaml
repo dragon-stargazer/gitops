@@ -6,7 +6,7 @@ resources:
   - ../../../../catalog/external-dns.yaml
   - ../../../../catalog/harbor.yaml
   - ../../../../catalog/istio.yaml
-  - ../../../../catalog/kata-deploy/k3s
+  - ../../../../catalog/kata-deploy.yaml
   - ../../../../catalog/kube-prometheus-stack.yaml
   - ../../../../catalog/node-problem-detector.yaml
   - ../../../../catalog/seaweedfs.yaml
