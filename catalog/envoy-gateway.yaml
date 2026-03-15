@@ -4,14 +4,48 @@ metadata:
   name: envoy-gateway-system
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
+kind: OCIRepository
 metadata:
-  name: envoyproxy
+  name: envoy-gateway-crds
   namespace: envoy-gateway-system
 spec:
   interval: 24h
-  type: oci
-  url: oci://docker.io/envoyproxy
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
+  ref:
+    tag: v1.7.1
+  url: oci://docker.io/envoyproxy/gateway-crds-helm
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: envoy-gateway-crds
+  namespace: envoy-gateway-system
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: envoy-gateway-crds
+    namespace: envoy-gateway-system
+  interval: 1h
+  values:
+    crds:
+      envoyGateway:
+        enabled: true
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: envoy-gateway
+  namespace: envoy-gateway-system
+spec:
+  interval: 24h
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
+  ref:
+    tag: v1.7.1
+  url: oci://docker.io/envoyproxy/gateway-helm
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -19,13 +53,12 @@ metadata:
   name: envoy-gateway
   namespace: envoy-gateway-system
 spec:
-  chart:
-    spec:
-      chart: gateway-helm
-      sourceRef:
-        kind: HelmRepository
-        name: envoyproxy
-      version: v1.7.1
+  chartRef:
+    kind: OCIRepository
+    name: envoy-gateway
+    namespace: envoy-gateway-system
+  dependsOn:
+    - name: envoy-gateway-crds
   interval: 1h
   values:
     kubernetesClusterDomain: ${CLUSTER_DOMAIN:=cluster.local}
