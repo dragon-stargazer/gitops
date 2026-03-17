@@ -145,6 +145,7 @@ spec:
         - op: add
           path: /spec/values/proxy
           value:
+            httpProxy: ${HTTPS_PROXY}
             httpsProxy: ${HTTPS_PROXY}
             noProxy: ${NO_PROXY}
       target:
