@@ -33,7 +33,7 @@ spec:
       tls:
         enabled: false
       type: clusterIP
-    externalURL: http://harbor.harbor
+    externalURL: http://harbor.harbor.svc.${CLUSTER_DOMAIN:=cluster.local}
     jobservice:
       jobLoggers:
         - database
@@ -47,7 +47,7 @@ spec:
         s3:
           bucket: harbor
           existingSecret: harbor-secret
-          regionendpoint: http://seaweedfs-s3.seaweedfs:8333
+          regionendpoint: http://seaweedfs-s3.seaweedfs.svc.${CLUSTER_DOMAIN:=cluster.local}:8333
         type: s3
       persistentVolumeClaim:
         database:

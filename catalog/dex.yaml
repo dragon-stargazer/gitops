@@ -27,5 +27,7 @@ spec:
       version: 0.24.0
   interval: 1h
   values:
+    image:
+      tag: v2.45.1
     serviceMonitor:
       enabled: ${ENABLE_SERVICE_MONITOR:=true}
