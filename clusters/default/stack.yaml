@@ -114,6 +114,8 @@ spec:
               parentRefs:
                 - name: istio
                   namespace: watcher
+            tls:
+              enabled: false
             type: route
         - op: replace
           path: /spec/values/externalURL
