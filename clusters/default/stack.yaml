@@ -48,25 +48,6 @@ spec:
           value:
             - secretRef:
                 name: dex-credential
-        - op: add
-          path: /spec/values/ingress
-          value:
-            annotations:
-              cert-manager.io/cluster-issuer: letsencrypt
-              cert-manager.io/private-key-algorithm: ECDSA
-              cert-manager.io/private-key-rotation-policy: Always
-              external-dns.alpha.kubernetes.io/target: 100.100.192.31
-            className: istio
-            enabled: true
-            hosts:
-              - host: auth.bikeshed.dev
-                paths:
-                  - path: /dex/
-                    pathType: Prefix
-            tls:
-              - hosts:
-                  - auth.bikeshed.dev
-                secretName: dex-ingress
       target:
         group: helm.toolkit.fluxcd.io
         kind: HelmRelease
@@ -127,18 +108,15 @@ spec:
         - op: replace
           path: /spec/values/expose
           value:
-            ingress:
-              annotations:
-                cert-manager.io/cluster-issuer: letsencrypt
-                cert-manager.io/private-key-algorithm: ECDSA
-                cert-manager.io/private-key-rotation-policy: Always
-                external-dns.alpha.kubernetes.io/target: 100.100.192.31
-              className: istio
+            route:
               hosts:
-                core: harbor.bikeshed.dev
+                - harbor.bikeshed.dev
+              parentRefs:
+                - name: istio
+                  namespace: watcher
             tls:
               enabled: true
-            type: ingress
+            type: route
         - op: replace
           path: /spec/values/externalURL
           value: https://harbor.bikeshed.dev
@@ -155,6 +133,16 @@ spec:
         namespace: harbor
         version: v2
     - patch: |
+        - op: replace
+          path: /spec/values/grafana/route/main
+          value:
+            enabled: true
+            hostnames:
+              - grafana.bikeshed.dev
+            httpsRedirect: true
+            parentRefs:
+              - name: istio
+                namespace: watcher
         - op: replace
           path: /spec/values/prometheus/prometheusSpec/scrapeClasses
           value:
@@ -182,6 +170,16 @@ spec:
         #  value:
         #    - name: ${CLUSTER_NAME}
         #      url: https://prometheus.bikeshed.dev/api/v1/write
+        - op: replace
+          path: /spec/values/prometheus/route/main
+          value:
+            enabled: true
+            hostnames:
+              - prometheus.bikeshed.dev
+            httpsRedirect: true
+            parentRefs:
+              - name: istio
+                namespace: watcher
       target:
         group: helm.toolkit.fluxcd.io
         kind: HelmRelease
