@@ -114,8 +114,6 @@ spec:
               parentRefs:
                 - name: istio
                   namespace: watcher
-            tls:
-              enabled: true
             type: route
         - op: replace
           path: /spec/values/externalURL
@@ -140,7 +138,6 @@ spec:
               enabled: true
               hostnames:
                 - grafana.bikeshed.dev
-              httpsRedirect: true
               parentRefs:
                 - name: istio
                   namespace: watcher
@@ -178,7 +175,6 @@ spec:
               enabled: true
               hostnames:
                 - prometheus.bikeshed.dev
-              httpsRedirect: true
               parentRefs:
                 - name: istio
                   namespace: watcher
