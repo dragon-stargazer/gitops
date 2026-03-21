@@ -134,15 +134,16 @@ spec:
         version: v2
     - patch: |
         - op: add
-          path: /spec/values/grafana/route/main
+          path: /spec/values/grafana/route
           value:
-            enabled: true
-            hostnames:
-              - grafana.bikeshed.dev
-            httpsRedirect: true
-            parentRefs:
-              - name: istio
-                namespace: watcher
+            main:
+              enabled: true
+              hostnames:
+                - grafana.bikeshed.dev
+              httpsRedirect: true
+              parentRefs:
+                - name: istio
+                  namespace: watcher
         - op: replace
           path: /spec/values/prometheus/prometheusSpec/scrapeClasses
           value:
@@ -171,15 +172,16 @@ spec:
         #    - name: ${CLUSTER_NAME}
         #      url: https://prometheus.bikeshed.dev/api/v1/write
         - op: add
-          path: /spec/values/prometheus/route/main
+          path: /spec/values/prometheus/route
           value:
-            enabled: true
-            hostnames:
-              - prometheus.bikeshed.dev
-            httpsRedirect: true
-            parentRefs:
-              - name: istio
-                namespace: watcher
+            main:
+              enabled: true
+              hostnames:
+                - prometheus.bikeshed.dev
+              httpsRedirect: true
+              parentRefs:
+                - name: istio
+                  namespace: watcher
       target:
         group: helm.toolkit.fluxcd.io
         kind: HelmRelease
