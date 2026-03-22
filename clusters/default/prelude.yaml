@@ -5,9 +5,22 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h
+  patches:
+    - patch: |
+        - op: add
+          path: /spec/secretRef
+          value:
+            name: oci-credential
+      target:
+        group: source.toolkit.fluxcd.io
+        kind: OCIRepository
+        labelSelector: manage-oci-credential=enabled
+        version: v1
   path: ./catalog/prelude/enhanced
   postBuild:
     substitute:
+      GHCR_REGISTRY_MIRROR: harbor.bikeshed.dev/ghcr.io
+      QUAY_REGISTRY_MIRROR: harbor.bikeshed.dev/quay.io
       var_substitution_enabled: "true"
   prune: true
   retryInterval: 1m

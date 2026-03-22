@@ -26,3 +26,4 @@ resources:
   - sops-doppler-external-dns.yaml
   - sops-doppler-grafana.yaml
   - sops-doppler-harbor.yaml
+  - sops-pulumi-oci-credential.yaml

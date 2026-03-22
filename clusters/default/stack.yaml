@@ -59,28 +59,10 @@ spec:
           path: /spec/secretRef
           value:
             name: oci-credential
-        - op: replace
-          path: /spec/url
-          value: oci://harbor.bikeshed.dev/docker.io/envoyproxy/gateway-crds-helm
       target:
         group: source.toolkit.fluxcd.io
         kind: OCIRepository
-        name: envoy-gateway-crds
-        namespace: envoy-gateway-system
-        version: v1
-    - patch: |
-        - op: add
-          path: /spec/secretRef
-          value:
-            name: oci-credential
-        - op: replace
-          path: /spec/url
-          value: oci://harbor.bikeshed.dev/docker.io/envoyproxy/gateway-helm
-      target:
-        group: source.toolkit.fluxcd.io
-        kind: OCIRepository
-        name: envoy-gateway
-        namespace: envoy-gateway-system
+        labelSelector: manage-oci-credential=enabled
         version: v1
     - patch: |
         - op: add
@@ -190,10 +172,13 @@ spec:
   postBuild:
     substitute:
       CLUSTER_NAME: local-k3s
+      DOCKERHUB_REGISTRY_MIRROR: harbor.bikeshed.dev/docker.io
       GATEWAY_SERVICE_TYPE: LoadBalancer
+      GHCR_REGISTRY_MIRROR: harbor.bikeshed.dev/ghcr.io
       HTTPS_PROXY: http://172.20.24.11:6666
       K8S_DISTRO: k3s
       NO_PROXY: 127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,localhost,.local,.internal,.svc,.bikeshed.dev
+      QUAY_REGISTRY_MIRROR: harbor.bikeshed.dev/quay.io
       var_substitution_enabled: "true"
   prune: true
   retryInterval: 1m
