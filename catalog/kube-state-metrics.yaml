@@ -1,6 +1,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
+  labels:
+    manage-oci-credential: enabled
   name: kube-state-metrics
   namespace: kube-system
 spec:
@@ -10,7 +12,7 @@ spec:
     operation: copy
   ref:
     tag: 7.2.1
-  url: oci://ghcr.io/prometheus-community/charts/kube-state-metrics
+  url: oci://${GHCR_REGISTRY_MIRROR:=ghcr.io}/prometheus-community/charts/kube-state-metrics
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
