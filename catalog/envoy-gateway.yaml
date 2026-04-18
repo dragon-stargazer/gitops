@@ -18,7 +18,7 @@ spec:
     mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
     operation: copy
   ref:
-    tag: 1.7.1
+    tag: 1.7.2
   url: oci://${DOCKERHUB_REGISTRY_MIRROR:=docker.io}/envoyproxy/gateway-crds-helm
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
@@ -50,7 +50,7 @@ spec:
     mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
     operation: copy
   ref:
-    tag: 1.7.1
+    tag: 1.7.2
   url: oci://${DOCKERHUB_REGISTRY_MIRROR:=docker.io}/envoyproxy/gateway-helm
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
