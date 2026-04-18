@@ -16,7 +16,7 @@ spec:
         kind: HelmRepository
         name: istio
         namespace: istio-system
-      version: 1.29.1
+      version: 1.29.2
   dependsOn:
     - name: istiod
       namespace: istio-system
