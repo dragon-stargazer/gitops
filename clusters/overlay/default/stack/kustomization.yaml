@@ -19,7 +19,6 @@ resources:
   - gateway-istio.yaml
   - gateway-namespace.yaml
   - homelab-proxy.yaml
-  - http-route-dex.yaml
   - issuer-letsencrypt.yaml
   - sops-doppler-cert-manager.yaml
   - sops-doppler-dex.yaml
