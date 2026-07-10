@@ -48,6 +48,20 @@ spec:
           value:
             - secretRef:
                 name: dex-credential
+        - op: replace
+          path: /spec/values/httpRoute
+          value:
+            enabled: true
+            hostnames:
+              - auth.bikeshed.dev
+            parentRefs:
+              - name: istio
+                namespace: watcher
+            rules:
+              - matches:
+                  - path:
+                      type: PathPrefix
+                      value: /dex/
       target:
         group: helm.toolkit.fluxcd.io
         kind: HelmRelease
